@@ -227,7 +227,7 @@ def generate_workout():
     workout_goal = data.get('workout_goal', 'weight loss')
     restrictions = data.get('restrictions', 'no equipment')
 
-    with open("/Users/pro/Desktop/GitHub Repos/IntelliFit/Planning/template.txt", "r") as f:
+    with open("/Users/pro/Desktop/GitHub Repos/IntelliFit/template.txt", "r") as f:
         template = f.read()
 
     template = re.sub(r"Skill level: \[beginner / intermediate / advanced\]", f"Skill level: {skill_level}", template)

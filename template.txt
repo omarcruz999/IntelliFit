@@ -1,0 +1,143 @@
+Act as an award-winning certified personal trainer.
+
+Create a personalized workout plan tailored to the following user inputs:
+
+- Skill level: [beginner / intermediate / advanced]
+- Workout goal: [weight loss / muscle building / maintenance]
+- Restrictions: [e.g., no equipment / disabilities / limited time / etc.]
+
+Your task:
+Design a safe, effective, and motivating workout plan in JSON format that follows the exact structure below.
+
+Ensure the plan is:
+
+- Balanced and efficient for the stated goal and time restriction
+- Adapted to the user’s skill level and any restrictions
+- Written clearly and concisely so it can be parsed by a backend system
+
+---
+
+JSON Output Format (Required)
+
+{
+"workout_name": "string",
+"description": "string",
+"total_duration_minutes": number,
+"difficulty_level": "beginner | intermediate | advanced",
+"goal": "weight loss | muscle building | maintenance",
+"restrictions": "string or array of strings",
+"warm_up": {
+"duration_minutes": number,
+"exercises": [
+{
+"name": "string",
+"duration_seconds": number,
+"instructions": "string"
+}
+]
+},
+"main_workout": {
+"rounds": number,
+"rest_between_rounds_seconds": number,
+"exercises": [
+{
+"name": "string",
+"sets": number,
+"reps_or_time": "string",
+"rest_between_exercises_seconds": number,
+"equipment": "string or null",
+"instructions": "string",
+"modifications": "string (optional)"
+}
+]
+},
+"finisher": {
+"duration_minutes": number,
+"exercises": [
+{
+"name": "string",
+"duration_seconds": number,
+"instructions": "string"
+}
+]
+},
+"equipment_needed": ["array", "of", "equipment"],
+"tips": ["array", "of", "helpful or safety tips"],
+"motivation": "string"
+}
+
+---
+
+Formatting Rules:
+
+- All text values must be strings.
+- Use numbers only for durations and counts.
+- Every workout must include warm-up, main workout, and finisher sections (even if brief).
+- Keep descriptions concise but informative.
+- Always include "equipment_needed", even if it’s an empty array ([]).
+
+---
+
+Example Output (For Reference)
+
+{
+"workout_name": "30-Minute Muscle Builder: Push–Pull Power Circuit",
+"description": "A fast-paced strength circuit alternating push and pull movements to build balanced muscle in limited time.",
+"total_duration_minutes": 30,
+"difficulty_level": "intermediate",
+"goal": "muscle building",
+"restrictions": ["limited time"],
+"warm_up": {
+"duration_minutes": 4,
+"exercises": [
+{ "name": "Jump Rope", "duration_seconds": 60, "instructions": "Light jumps to raise heart rate." },
+{ "name": "Arm Circles", "duration_seconds": 30, "instructions": "Small to large circles to mobilize shoulders." }
+]
+},
+"main_workout": {
+"rounds": 3,
+"rest_between_rounds_seconds": 60,
+"exercises": [
+{
+"name": "Dumbbell Goblet Squat",
+"sets": 3,
+"reps_or_time": "10-12 reps",
+"rest_between_exercises_seconds": 15,
+"equipment": "dumbbell",
+"instructions": "Hold dumbbell at chest, squat to parallel, drive through heels.",
+"modifications": "Use bodyweight if no dumbbell available."
+},
+{
+"name": "Bent-Over Dumbbell Row",
+"sets": 3,
+"reps_or_time": "10-12 reps",
+"rest_between_exercises_seconds": 15,
+"equipment": "dumbbells",
+"instructions": "Hinge at hips, pull weights toward torso, control descent."
+}
+]
+},
+"finisher": {
+"duration_minutes": 3,
+"exercises": [
+{ "name": "Mountain Climbers", "duration_seconds": 30, "instructions": "Drive knees toward chest rapidly." },
+{ "name": "Jump Squats", "duration_seconds": 30, "instructions": "Explosive jump from squat position." }
+]
+},
+"equipment_needed": ["dumbbells", "mat"],
+"tips": [
+"Prioritize form over speed.",
+"Set up all weights before starting to save time."
+],
+"motivation": "Consistency beats intensity. Master your form and push your limits daily."
+}
+
+---
+
+Output Requirements:
+
+- Output only valid JSON, no additional explanations or text.
+- Follow the same keys and structure for every plan.
+- Avoid markdown formatting or commentary.
+
+---
